@@ -11,9 +11,9 @@ import { site } from '../../site.config';
 >
   <HeroCarousel />
 
-  <section class="section section-dark">
+  <section class="welcome">
     <div class="container welcome-grid">
-      <div>
+      <div class="welcome-copy">
         <h3>Welcome to Indra Heritage School</h3>
         <p>
           Indra Heritage School is a co-educational, English medium school, offering value-based
@@ -24,29 +24,24 @@ import { site } from '../../site.config';
           higher educational institutes. Indra Heritage School is another such effort with an aim to
           impart quality primary &amp; secondary education to children.
         </p>
+        <div class="welcome-actions">
+          <a class="btn btn-yellow" href="/about">Learn More</a>
+          <a class="btn btn-maroon" href={site.applyUrl} target="_blank" rel="noopener">Enroll Now</a>
+        </div>
       </div>
-      <div>
+      <div class="welcome-media">
         <img
           src="/images/welcome.jpg"
           alt="Indra Heritage School School Building Aerial View"
-          width="730"
-          height="488"
+          width="841"
+          height="560"
         />
+        <p class="welcome-media__caption">Your gateway to a brighter tomorrow</p>
       </div>
     </div>
   </section>
 
-  <section class="cta-band">
-    <div class="container">
-      <h3>Your gateway to a brighter tomorrow</h3>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <a class="btn btn-maroon" href={site.applyUrl} target="_blank" rel="noopener">Enroll Now</a>
-        <a class="btn btn-yellow" href="/about">Learn More</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-dark">
+  <section class="section section-yellow">
     <div class="container">
       <h3 style="text-align:center;margin-bottom:36px">Why Indra Heritage School?</h3>
       <div class="features-grid">
