@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroCarousel from '../components/HeroCarousel.astro';
+import MapEmbed from '../components/MapEmbed.astro';
+import { site } from '../../site.config';
+---
+
+<BaseLayout
+  title="Indra Heritage School – Gateway to a Brighter Tomorrow | Indra Heritage School"
+  canonicalPath="/"
+>
+  <HeroCarousel />
+
+  <section class="section section-dark">
+    <div class="container welcome-grid">
+      <div>
+        <h3>Welcome to Indra Heritage School</h3>
+        <p>
+          Indra Heritage School is a co-educational, English medium school, offering value-based
+          education from Nursery to class VIII. IHS has been established to honor the legacy of Sh.
+          Indra Deo Dhar Dubey. Born and brought up in Tilaura village, in 2004 he established Smt.
+          Pyari Devi Educational Society, just 2 kms away from his village with a hope that no other
+          student struggles to attain higher education like he had to. Today our society has 5+
+          higher educational institutes. Indra Heritage School is another such effort with an aim to
+          impart quality primary &amp; secondary education to children.
+        </p>
+      </div>
+      <div>
+        <img
+          src="/images/welcome.jpg"
+          alt="Indra Heritage School School Building Aerial View"
+          width="730"
+          height="488"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container">
+      <h3>Your gateway to a brighter tomorrow</h3>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a class="btn btn-maroon" href={site.applyUrl} target="_blank" rel="noopener">Enroll Now</a>
+        <a class="btn btn-yellow" href="/about">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <h3 style="text-align:center;margin-bottom:36px">Why Indra Heritage School?</h3>
+      <div class="features-grid">
+        {
+          site.whyFeatures.map((f) => (
+            <article class="feature-card">
+              <img src={f.icon} alt={f.title} width="110" height="110" />
+              <h6>{f.title}</h6>
+              <p>{f.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="amenities-intro">
+        <h3>Curricular Amenities</h3>
+        <p>
+          Indra Heritage School boasts a comprehensive suite of curricular amenities designed to
+          enhance learning and ignite curiosity.
+        </p>
+      </div>
+      {
+        site.amenities.map((a) => (
+          <article class="amenity">
+            <img src={a.image} alt={a.title} width="720" height="450" loading="lazy" />
+            <div>
+              <h6>{a.title}</h6>
+              <p>{a.text}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container location-block">
+      <div class="location-card">
+        <h4>School Location</h4>
+        <p>
+          Indra Heritage School<br />
+          {site.address.line1}<br />
+          {site.address.line2}<br />
+          Hours {site.address.hours}<br />
+          Contacts {site.phones[0]} or {site.phones[1]}<br />
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </p>
+      </div>
+      <MapEmbed />
+    </div>
+  </section>
+</BaseLayout>

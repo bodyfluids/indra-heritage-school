@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MapEmbed from '../components/MapEmbed.astro';
+import { site } from '../../site.config';
+---
+
+<BaseLayout
+  title="Contact Indra Heritage School for Quality Education | Indra Heritage School"
+  description="Get in touch with Indra Heritage School for inquiries about our value-based education, admissions, and more. We are dedicated to providing quality education from nursery to class IX, honoring the legacy of Sh. Indra Deo Dhar Dubey."
+  canonicalPath="/contact"
+>
+  <section class="section">
+    <div class="container location-block">
+      <div class="location-card">
+        <h4>Contact Us</h4>
+        <p>
+          Indra Heritage School<br />
+          {site.address.line1}<br />
+          {site.address.line2}<br />
+          Hours {site.address.hours}<br />
+          Contacts {site.phones[0]} or {site.phones[1]}<br />
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </p>
+      </div>
+      <MapEmbed title="Locate Indra Heritage School" />
+    </div>
+  </section>
+</BaseLayout>

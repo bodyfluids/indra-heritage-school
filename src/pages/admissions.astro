@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../../site.config';
+
+const gallery = [
+  '/images/admissions-1.jpg',
+  '/images/admissions-2.jpg',
+  '/images/admissions-3.jpg',
+  '/images/admissions-4.jpg',
+  '/images/admissions-5.jpg',
+  '/images/admissions-6.jpg',
+];
+---
+
+<BaseLayout
+  title="Admissions Open at Indra Heritage School for Quality Education | Indra Heritage School"
+  description="Join Indra Heritage School for value-based education from nursery to class IX. We honor the legacy of Sh. Indra Deo Dhar Dubey, providing quality primary and secondary education in a nurturing environment. Enroll your child today for a brighter future."
+  keywords="Indra Heritage School, Admissions, Quality Education"
+  canonicalPath="/admissions"
+>
+  <section class="page-hero-title">
+    <div class="container">
+      <h1>Admissions open for {site.sessionYear} session</h1>
+      <p>
+        IHS is a co-educational, English medium school, offering value based education from Nursery
+        to class VIII
+      </p>
+      <a class="btn btn-maroon" href={site.applyUrl} target="_blank" rel="noopener">Apply Now</a>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container features-grid">
+      <article class="feature-card">
+        <h6>Holistic Development Focus</h6>
+        <p>
+          We focus on holistic development, combining academic excellence with character growth for a
+          brighter future.
+        </p>
+      </article>
+      <article class="feature-card">
+        <h6>Curriculum That Inspires Excellence</h6>
+        <p>
+          Designed to challenge and inspire, our academic programs cultivate a passion for learning
+          and excellence.
+        </p>
+      </article>
+      <article class="feature-card">
+        <h6>Inclusive Learning Environment</h6>
+        <p>
+          Join us in nurturing young minds with quality education and a commitment to lifelong
+          learning.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h3>Gallery</h3>
+      <p>Explore our vibrant moments of learning and growth at Indra Heritage School</p>
+      <div class="gallery-grid" style="margin-top:24px">
+        {gallery.map((src, i) => <img src={src} alt={`Admissions gallery ${i + 1}`} loading="lazy" />)}
+      </div>
+      <p style="margin-top:24px">
+        <a class="btn btn-yellow" href="/gallery">View full gallery</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

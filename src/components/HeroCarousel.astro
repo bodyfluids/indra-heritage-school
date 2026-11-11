@@ -1,0 +1,76 @@
+---
+import { site } from '../../site.config';
+const slides = site.heroSlides;
+---
+
+<section class="hero" aria-label="Campus photo carousel" data-hero>
+  {
+    slides.map((src, i) => (
+      <div class:list={['hero__slide', { 'is-active': i === 0 }]} data-slide={i}>
+        <img src={src} alt="" loading={i === 0 ? 'eager' : 'lazy'} />
+      </div>
+    ))
+  }
+  <div class="hero__nav">
+    <button type="button" data-hero-prev aria-label="Previous slide">‹</button>
+    <button type="button" data-hero-next aria-label="Next slide">›</button>
+  </div>
+  <div class="hero__dots" data-hero-dots>
+    {
+      slides.map((_, i) => (
+        <button
+          type="button"
+          class:list={{ 'is-active': i === 0 }}
+          data-dot={i}
+          aria-label={`Go to slide ${i + 1}`}
+        />
+      ))
+    }
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    var root = document.querySelector('[data-hero]');
+    if (!root) return;
+    var slides = Array.prototype.slice.call(root.querySelectorAll('[data-slide]'));
+    var dots = Array.prototype.slice.call(root.querySelectorAll('[data-dot]'));
+    var index = 0;
+    var timer;
+
+    function show(i) {
+      index = (i + slides.length) % slides.length;
+      slides.forEach(function (el, n) {
+        el.classList.toggle('is-active', n === index);
+      });
+      dots.forEach(function (el, n) {
+        el.classList.toggle('is-active', n === index);
+      });
+    }
+
+    function next() {
+      show(index + 1);
+    }
+
+    function start() {
+      stop();
+      timer = window.setInterval(next, 4500);
+    }
+
+    function stop() {
+      if (timer) window.clearInterval(timer);
+    }
+
+    var prev = root.querySelector('[data-hero-prev]');
+    var nextBtn = root.querySelector('[data-hero-next]');
+    if (prev) prev.addEventListener('click', function () { show(index - 1); start(); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { show(index + 1); start(); });
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        show(Number(dot.getAttribute('data-dot')));
+        start();
+      });
+    });
+    start();
+  })();
+</script>

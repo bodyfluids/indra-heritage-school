@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const morningAssembly = [
+  '/images/gallery-01.jpg',
+  '/images/gallery-02.jpg',
+  '/images/gallery-03.jpg',
+  '/images/gallery-04.jpg',
+  '/images/gallery-05.jpg',
+  '/images/gallery-06.jpg',
+  '/images/gallery-07.jpg',
+  '/images/gallery-08.jpg',
+  '/images/gallery-09.jpg',
+];
+
+const campusLife = [
+  '/images/gallery-10.jpg',
+  '/images/gallery-11.jpg',
+  '/images/gallery-12.jpg',
+  '/images/gallery-13.jpg',
+  '/images/gallery-14.jpg',
+  '/images/gallery-15.jpg',
+  '/images/gallery-16.jpg',
+  '/images/gallery-17.jpg',
+  '/images/gallery-18.jpg',
+  '/images/gallery-19.jpg',
+  '/images/gallery-20.jpg',
+  '/images/gallery-21.jpg',
+];
+---
+
+<BaseLayout
+  title="Indra Heritage School - Quality Education in Tilaura | Indra Heritage School"
+  canonicalPath="/gallery"
+>
+  <section class="page-hero-title">
+    <div class="container">
+      <h3>IHS Gallery</h3>
+      <p>Explore our vibrant moments of learning and growth at Indra Heritage School</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <h3>Morning Assembly</h3>
+      <div class="gallery-grid" style="margin-top:20px">
+        {
+          morningAssembly.map((src, i) => (
+            <img src={src} alt={`Morning Assembly ${i + 1}`} loading="lazy" />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <h3>Campus Life</h3>
+      <div class="gallery-grid" style="margin-top:20px">
+        {campusLife.map((src, i) => <img src={src} alt={`Campus life ${i + 1}`} loading="lazy" />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

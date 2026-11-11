@@ -1,0 +1,27 @@
+<div class="cookie-banner" id="cookie-banner" hidden>
+  <p>
+    This website uses cookies to provide necessary site functionality and to improve your experience.
+    By using this website, you agree to our use of cookies.
+  </p>
+  <div class="cookie-banner__actions">
+    <button type="button" class="accept" id="cookie-accept">Accept</button>
+    <button type="button" class="decline" id="cookie-decline">Decline</button>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var key = 'ihs-cookie-consent';
+    var banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+    if (!localStorage.getItem(key)) banner.hidden = false;
+    function dismiss(value) {
+      localStorage.setItem(key, value);
+      banner.hidden = true;
+    }
+    var accept = document.getElementById('cookie-accept');
+    var decline = document.getElementById('cookie-decline');
+    if (accept) accept.addEventListener('click', function () { dismiss('accepted'); });
+    if (decline) decline.addEventListener('click', function () { dismiss('declined'); });
+  })();
+</script>

@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../../site.config';
+
+const sports = [
+  '/images/about-sports-1.jpg',
+  '/images/about-sports-2.jpg',
+  '/images/about-sports-3.jpg',
+  '/images/about-sports-4.jpg',
+  '/images/about-beyond.jpg',
+  '/images/about-campus-6.jpg',
+];
+
+const campus = [
+  '/images/about-campus-1.jpg',
+  '/images/about-campus-2.jpg',
+  '/images/about-campus-3.jpg',
+  '/images/about-campus-4.jpg',
+  '/images/about-campus-5.jpg',
+  '/images/about-campus-7.jpg',
+  '/images/about-campus-8.jpg',
+  '/images/about-campus-9.jpg',
+  '/images/about-campus-10.jpg',
+];
+---
+
+<BaseLayout
+  title="Indra Heritage School - Quality Education in Tilaura | Indra Heritage School"
+  description="Indra Heritage School offers value-based education from nursery to class IX. Established to honor Sh. Indra Deo Dhar Dubey, we aim to provide quality primary and secondary education in a nurturing environment, ensuring every child has the opportunity to succeed."
+  keywords="Indra Heritage School, CBSE education, quality primary education"
+  canonicalPath="/about"
+>
+  <section class="cta-band">
+    <div class="container">
+      <h3>Admissions open for Nursery to VIII</h3>
+      <a class="btn btn-maroon" href={site.applyUrl} target="_blank" rel="noopener">Enquire for admission</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container about-message">
+      <div class="prose" style="margin:0">
+        <h3>A Message from our Chairperson</h3>
+        <p>
+          It is with immense pride and humility that I welcome you to Indra Heritage School, an
+          institution born from a dream fueled by the indomitable spirit of my father, Sh. Indra Deo
+          Dhar Dubey.
+        </p>
+        <p>
+          My father, Indra Ji, as he was lovingly known, was a man forged in the fires of adversity.
+          Growing up in our village of Tilaura, Uttar Pradesh, education was not a privilege but a
+          battle hard-won. Battling through poverty and the limitations of his circumstances, he
+          never let go of his thirst for knowledge. The incident where his shoulders burdened with
+          his bicycle, trudging through rain to reach school, is etched forever in my memory.
+        </p>
+        <p>
+          Yet, it was this very struggle that shaped his vision. Witnessing the hardships students
+          like him faced, he vowed to build a bridge, a path that would make education accessible to
+          all. And so, in 2004, the Smt. Pyari Devi Educational Society Trust was born, carrying his
+          mother's name and his unwavering commitment. Today, PDES Trust stands tall, a beacon of
+          hope with over five institutions dedicated to higher education.
+        </p>
+        <h5>
+          <a href={site.facebook} target="_blank" rel="noopener">Mr. Jayant Dev Dhar Dubey</a>
+        </h5>
+        <p>Chairperson, Indra Heritage School</p>
+        <p>
+          Indra Heritage School is a testament to his unyielding belief in the transformative power
+          of education. This school is not merely bricks and mortar; it is a living embodiment of
+          his values, his dreams, his legacy.
+        </p>
+        <p>
+          Here, within these walls, we strive to create a haven where young minds can blossom. We
+          believe that knowledge is not just power, it is liberation. It is the key that unlocks
+          doors, shatters limitations, and paves the way for a brighter future. Let us, together,
+          honor his memory by building a future where education is not a privilege, but a birthright.
+        </p>
+        <p>Welcome to Indra Heritage School. Welcome to our family.</p>
+        <p>
+          With warm regards,<br />
+          Mr. Jayant Dev Dhar Dubey<br />
+          Chairperson, Indra Heritage School
+        </p>
+      </div>
+      <div class="rounded-media">
+        <img
+          src="/images/about-chairperson.jpg"
+          alt="Mr. Jayant Dev Dhar Dubey"
+          width="600"
+          height="750"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <h3>Diverse Sporting Haven</h3>
+      <p>
+        Nestled on a sprawling 3-acre campus, School provides ample space for students to explore
+        their athletic potential.
+      </p>
+      <p>Cricket Academy. Basketball Ball Court. Football Ground. Play area for pre-primary classes</p>
+      <div class="gallery-grid" style="margin-top:28px">
+        {sports.map((src, i) => <img src={src} alt={`Sports ${i + 1}`} loading="lazy" />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h3>Quality education with world class infrastructure</h3>
+      <p>Indra Heritage School offers value-based quality education from Nursery-VIII</p>
+      <div class="gallery-grid" style="margin-top:28px">
+        {campus.map((src, i) => <img src={src} alt={`Campus ${i + 1}`} loading="lazy" />)}
+      </div>
+      <div class="features-grid" style="margin-top:40px">
+        <article class="feature-card" style="color:inherit">
+          <h5>Learning That Transforms</h5>
+          <p style="color:var(--muted)">
+            Fostering growth through practical experiences and cutting-edge resources.
+          </p>
+        </article>
+        <article class="feature-card" style="color:inherit">
+          <h5>Embracing cultures to build global citizens</h5>
+          <p style="color:var(--muted)">
+            Our diverse programs foster understanding, collaboration, and respect for all cultures
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-message {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .about-message {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
