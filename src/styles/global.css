@@ -112,7 +112,7 @@ p {
 
 .btn-maroon {
   background: var(--maroon);
-  color: rgb(241, 241, 241);
+  color: #fff;
 }
 
 .btn-maroon:hover {
@@ -142,7 +142,7 @@ p {
   min-width: 272px;
 }
 
-/* Announcement */
+/* Announcement — static centered bar matching Hostinger sticky bar */
 .announcement {
   background: var(--maroon);
   color: var(--white);
@@ -162,28 +162,7 @@ p {
   position: sticky;
   top: 0;
   z-index: 110;
-}
-
-.announcement__track {
-  display: inline-block;
   white-space: nowrap;
-  animation: marquee 28s linear infinite;
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(20%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .announcement__track {
-    animation: none;
-    white-space: normal;
-  }
 }
 
 /* Header */
@@ -207,8 +186,9 @@ p {
 .site-header__nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 20px;
+  gap: 16px 32px;
   align-items: center;
+  max-width: 430px;
 }
 
 .site-header__nav a {
@@ -217,7 +197,7 @@ p {
   font-weight: 400;
   line-height: 24px;
   color: var(--ink);
-  padding: 2px 0;
+  padding: 0;
 }
 
 .site-header__nav a[aria-current='page'] {
@@ -227,6 +207,7 @@ p {
 
 .site-header__nav .nav-secondary {
   flex-basis: 100%;
+  width: auto;
 }
 
 .site-header__logo {
@@ -259,8 +240,10 @@ p {
 
 .icon-row a {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: var(--ink);
-  width: 20px;
+  width: 36px;
   height: 20px;
 }
 
@@ -467,13 +450,14 @@ p {
 
 .welcome {
   background: var(--white);
-  padding: 48px 0 56px;
+  padding: 64px 0 56px;
 }
 
 .welcome-grid {
   display: grid;
-  grid-template-columns: 1.05fr 1.15fr;
-  gap: 40px;
+  grid-template-columns: minmax(0, 606px) 548px;
+  justify-content: space-between;
+  gap: 70px;
   align-items: center;
 }
 
@@ -492,6 +476,7 @@ p {
   font-family: var(--font-ui);
   font-size: 16px;
   line-height: 24px;
+  text-align: justify;
 }
 
 .welcome-actions {
@@ -502,30 +487,45 @@ p {
 
 .welcome-media {
   position: relative;
+  width: 548px;
+  max-width: 100%;
+  height: 560px;
   border-radius: 20px;
   overflow: hidden;
+  justify-self: end;
 }
 
 .welcome-media img {
   width: 100%;
-  height: auto;
-  aspect-ratio: 841 / 560;
+  height: 100%;
   object-fit: cover;
-  border-radius: 20px;
+  object-position: center;
+  border-radius: 0;
+}
+
+.welcome-media__plate {
+  position: absolute;
+  left: 82px;
+  top: 407px;
+  width: 372px;
+  height: 118px;
+  max-width: calc(100% - 32px);
+  background: var(--maroon);
+  display: flex;
+  align-items: center;
+  padding: 0 26px;
+  box-sizing: border-box;
 }
 
 .welcome-media__caption {
-  position: absolute;
-  left: 12%;
-  bottom: 14%;
-  max-width: 320px;
   margin: 0;
   color: #fff;
   font-family: var(--font-display);
   font-size: 24px;
   font-weight: 600;
   line-height: 1.3;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+  width: 319px;
+  max-width: 100%;
 }
 
 .features-grid {
@@ -563,12 +563,19 @@ p {
 }
 
 .amenities-intro {
-  max-width: 720px;
+  max-width: 100%;
   margin-bottom: 36px;
+  text-align: center;
 }
 
 .amenities-intro h3 {
   margin-bottom: 12px;
+}
+
+.amenities-intro p {
+  max-width: 606px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .amenity {
@@ -671,6 +678,14 @@ p {
   color: var(--yellow-cta);
 }
 
+.site-footer .btn {
+  color: var(--ink);
+}
+
+.site-footer .btn:hover {
+  color: var(--ink);
+}
+
 .site-footer .icon-row a {
   color: #fff;
 }
@@ -689,7 +704,8 @@ p {
 }
 
 .footer-logo {
-  width: 110px;
+  width: 163px;
+  height: auto;
   opacity: 0.95;
 }
 
@@ -909,6 +925,31 @@ p {
     grid-template-columns: 1fr;
   }
 
+  .welcome-grid {
+    gap: 28px;
+  }
+
+  .welcome-media {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 548 / 560;
+  }
+
+  .welcome-media__plate {
+    left: 16px;
+    top: auto;
+    bottom: 20px;
+    width: min(372px, calc(100% - 32px));
+    height: auto;
+    min-height: 72px;
+    padding: 16px 20px;
+  }
+
+  .welcome-media__caption {
+    font-size: 20px;
+    width: auto;
+  }
+
   .amenity:nth-child(even) {
     direction: ltr;
   }
@@ -918,10 +959,8 @@ p {
     grid-template-columns: 1fr 1fr;
   }
 
-  .welcome-media__caption {
-    font-size: 20px;
-    left: 8%;
-    bottom: 10%;
+  .site-header__nav {
+    max-width: none;
   }
 }
 
