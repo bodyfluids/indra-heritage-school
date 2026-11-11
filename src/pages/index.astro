@@ -3,6 +3,36 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroCarousel from '../components/HeroCarousel.astro';
 import MapEmbed from '../components/MapEmbed.astro';
 import { site } from '../../site.config';
+
+const pos = (x: number, y: number, w: number, extra: Record<string, number> = {}) =>
+  Object.entries({ x, y, w, ...extra })
+    .map(([k, v]) => `--${k}:${v}`)
+    .join(';');
+
+// Desktop: icon box (x, y, w, h). Mobile: icon top margin/height, title and text top margins.
+const whyLayout = [
+  { icon: [125, 224, 102, 100], m: [22, 108, 16.4, 7.6] },
+  { icon: [534, 220, 108, 108], m: [29.6, 112, 15.4, 8.6] },
+  { icon: [946, 217, 107, 107], m: [24.6, 115, 22.4, 8.6] },
+  { icon: [121, 470, 116, 116], m: [6.6, 158, 3.4, 7.6] },
+  { icon: [531, 470, 119, 119], m: [20.6, 141, 4, 5.6] },
+  { icon: [951, 482, 104, 104], m: [10, 117, 10, 6.6] },
+];
+const whyCols = [0, 412, 824];
+
+const welcomeText =
+  'Indra Heritage School is a co-educational, English medium school, offering value-based education from Nursery to class VIII. IHS has been established to honor the legacy of Sh. Indra Deo Dhar Dubey. Born and brought up in Tilaura village, in 2004 he established Smt. Pyari Devi Educational Society, just 2 kms away from his village with a hope that no other student struggles to attain higher education like he had to. Today our society has 5+ higher educational institutes. Indra Heritage School is another such effort with an aim to impart quality primary & secondary education to children.';
+const amenitiesIntro =
+  'Indra Heritage School boasts a comprehensive suite of curricular amenities designed to enhance learning and ignite curiosity.';
+
+// Desktop: image (x, y), shape (x, y, h), title (x, y), text (x, y).
+// Mobile: card top margin, card height, title top, shape top, shape height, text top.
+const amenityLayout = [
+  { img: [0, 280], shape: [32, 521, 240], title: [103, 561], text: [103, 597], m: [40, 457, 212, 184, 273, 241] },
+  { img: [618, 280], shape: [651, 521, 240], title: [721, 561], text: [722, 597], m: [60, 461, 216, 185, 276, 245] },
+  { img: [0, 841], shape: [33, 1081, 264], title: [103, 1121], text: [103, 1157], m: [64, 424, 199, 184, 240, 232] },
+  { img: [618, 841], shape: [651, 1081, 264], title: [721, 1121], text: [722, 1157], m: [72, 503, 208, 183, 320, 241] },
+];
 ---
 
 <BaseLayout
@@ -11,92 +41,100 @@ import { site } from '../../site.config';
 >
   <HeroCarousel />
 
-  <section class="welcome">
-    <div class="container welcome-grid">
-      <div class="welcome-copy">
-        <h3>Welcome to Indra Heritage School</h3>
-        <p>
-          Indra Heritage School is a co-educational, English medium school, offering value-based
-          education from Nursery to class VIII. IHS has been established to honor the legacy of Sh.
-          Indra Deo Dhar Dubey. Born and brought up in Tilaura village, in 2004 he established Smt.
-          Pyari Devi Educational Society, just 2 kms away from his village with a hope that no other
-          student struggles to attain higher education like he had to. Today our society has 5+
-          higher educational institutes. Indra Heritage School is another such effort with an aim to
-          impart quality primary &amp; secondary education to children.
-        </p>
-        <div class="welcome-actions">
-          <a class="btn btn-yellow" href="/about">Learn More</a>
-          <a class="btn btn-maroon" href={site.applyUrl} target="_blank" rel="noopener">Enroll Now</a>
-        </div>
-      </div>
-      <div class="welcome-media">
+  <section class="home-welcome">
+    <div class="zg" style="--H:728;--mpb:0">
+      <h3 class="z t-h3" style={pos(0, 120, 503, { mt: 40 })}>Welcome to<br />Indra Heritage School</h3>
+      <p class="z t-body welcome-text" style={pos(0, 288, 606, { mt: 21 })}>{welcomeText}</p>
+      <a class="z btn btn-yellow welcome-btn" href="/about" style={pos(0, 524, 194, { mt: 16, mo: 1 })}>Learn More</a>
+      <a
+        class="z btn btn-maroon welcome-btn"
+        href={site.applyUrl}
+        target="_blank"
+        rel="noopener"
+        style={pos(206, 524, 194, { mt: 13 })}>Enroll Now</a
+      >
+      <div class="z welcome-media" style={pos(676, 64, 548, { mt: 36, mo: 2 })}>
         <img
           src="/images/welcome.jpg"
           alt="Indra Heritage School School Building Aerial View"
           width="841"
           height="560"
         />
-        <div class="welcome-media__plate">
-          <h3 class="welcome-media__caption">Your gateway to a brighter tomorrow</h3>
-        </div>
       </div>
+      <div class="z welcome-plate" style={pos(612, 471, 372, { mt: -30, mo: 2 })}></div>
+      <h3 class="z welcome-caption" style={pos(638, 499, 319, { mt: -97, mo: 2 })}>Your gateway to a brighter tomorrow</h3>
     </div>
   </section>
 
-  <section class="section section-yellow">
-    <div class="container">
-      <h3 style="text-align:center;margin-bottom:36px">Why Indra Heritage School?</h3>
-      <div class="features-grid">
-        {
-          site.whyFeatures.map((f) => (
-            <article class="feature-card">
-              <img src={f.icon} alt={f.title} width="110" height="110" />
-              <h6>{f.title}</h6>
-              <p>{f.text}</p>
-            </article>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="amenities-intro">
-        <h3>Curricular Amenities</h3>
-        <p>
-          Indra Heritage School boasts a comprehensive suite of curricular amenities designed to
-          enhance learning and ignite curiosity.
-        </p>
-      </div>
+  <section class="home-why">
+    <div class="zg" style="--H:800;--mpb:30">
+      <h3 class="z t-h3 t-center" style={pos(0, 117, 1224, { mt: 40 })}>Why Indra Heritage School?</h3>
       {
-        site.amenities.map((a) => (
-          <article class="amenity">
-            <img src={a.image} alt={a.title} width="720" height="450" loading="lazy" />
-            <div>
-              <h6>{a.title}</h6>
-              <p>{a.text}</p>
-            </div>
-          </article>
-        ))
+        site.whyFeatures.map((f, i) => {
+          const l = whyLayout[i];
+          const col = whyCols[i % 3];
+          const row = i < 3 ? 0 : 266;
+          return (
+            <>
+              <img
+                class="z why-icon"
+                src={f.icon}
+                alt={f.title}
+                width={l.icon[2]}
+                height={l.icon[3]}
+                style={pos(l.icon[0], l.icon[1], l.icon[2], { h: l.icon[3], mt: l.m[0], mh: l.m[1] })}
+              />
+              <h6 class="z why-title" style={pos(col, 347 + row, 351, { mt: l.m[2] })}>{f.title}</h6>
+              <p class="z why-text" style={pos(col, i < 3 ? 384 : 649, 351, { mt: l.m[3] })}>{f.text}</p>
+            </>
+          );
+        })
       }
     </div>
   </section>
 
-  <section class="section" style="padding-top:0">
-    <div class="container location-block">
-      <div class="location-card">
-        <h4>School Location</h4>
-        <p>
-          Indra Heritage School<br />
-          {site.address.line1}<br />
-          {site.address.line2}<br />
-          Hours {site.address.hours}<br />
-          Contacts {site.phones[0]} or {site.phones[1]}<br />
-          <a href={`mailto:${site.email}`}>{site.email}</a>
-        </p>
+  <section class="home-amenities">
+    <div class="zg" style="--H:1436;--mpb:65">
+      <h3 class="z t-h3 t-center" style={pos(0, 80, 1224, { mt: 40 })}>Curricular Amenities</h3>
+      <p class="z t-body t-center" style={pos(309, 160, 606, { mt: 5 })}>{amenitiesIntro}</p>
+      {
+        site.amenities.map((a, i) => {
+          const l = amenityLayout[i];
+          return (
+            <div class="amenity-card" style={`--mt:${l.m[0]};--mh:${l.m[1]}`}>
+              <div class="z amenity-img" style={pos(l.img[0], l.img[1], 606)}>
+                <img src={a.image} alt={a.title} width="606" height="305" loading="lazy" />
+              </div>
+              <div
+                class="z amenity-shape"
+                style={pos(l.shape[0], l.shape[1], 541, { h: l.shape[2], my: l.m[3], mh2: l.m[4] })}
+              />
+              <h6 class="z amenity-title" style={pos(l.title[0], l.title[1], 400, { my: l.m[2] })}>{a.title}</h6>
+              <p class="z amenity-text" style={pos(l.text[0], l.text[1], 400, { my: l.m[5] })}>{a.text}</p>
+            </div>
+          );
+        })
+      }
+    </div>
+  </section>
+
+  <section class="home-location">
+    <div class="zg" style="--H:608;--mpb:41">
+      <h4 class="z location-title" style={pos(0, 120, 503, { mt: 40 })}>School Location</h4>
+      <p class="z location-text" style={pos(0, 214, 503, { mt: 22 })}>
+        <strong>Indra Heritage School</strong><br />
+        {site.address.line1}<br />
+        {site.address.line2}<br /><br />
+        <strong>Hours</strong><br />
+        Monday - Saturday<br />
+        9am - 6pm<br /><br />
+        <strong>Contacts</strong><br />
+        {site.phones[0]} or {site.phones[1]}<br />
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+      <div class="z location-map" style={pos(515, 80, 709, { mt: 40 })}>
+        <MapEmbed />
       </div>
-      <MapEmbed />
     </div>
   </section>
 </BaseLayout>

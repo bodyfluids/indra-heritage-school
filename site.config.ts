@@ -76,26 +76,27 @@ export const site = {
       icon: '/images/icon-tech.png',
     },
   ],
+  /** Homepage order is fixed: top-left, top-right, bottom-left, bottom-right. */
   amenities: [
-    {
-      title: 'Science Lab',
-      text: 'Our well-equipped science lab provides students with the opportunity to conduct hands-on experiments and demonstrations in all areas of science. The lab is stocked with a variety of equipment and materials, including microscopes, beakers, and burners.',
-      image: '/images/amenity-science.jpg',
-    },
     {
       title: 'Computer and Multimedia Lab',
       text: 'Our state-of-the-art computer and multimedia lab is equipped with the latest computers, high-speed internet access, and a variety of software programs. Students use the lab for research, presentations, and creative projects in a variety of subjects.',
       image: '/images/amenity-computer.jpg',
     },
     {
-      title: 'Classrooms',
-      text: 'Our spacious and well-lit classrooms provide a comfortable and stimulating learning environment. Each classroom is equipped with modern furniture and technology, including projectors and smart boards. We maintain an adequate student-teacher ratio to ensure that each student receives personalized attention.',
-      image: '/images/amenity-classroom.jpg',
+      title: 'Science Lab',
+      text: 'Our well-equipped science lab provides students with the opportunity to conduct hands-on experiments and demonstrations in all areas of science. The lab is stocked with a variety of equipment and materials, including microscopes, beakers, and burners.',
+      image: '/images/amenity-science.jpg',
     },
     {
       title: 'Library',
       text: 'Our expansive library boasts a diverse collection of books, periodicals, and electronic resources. Students have access to a quiet reading room and the assistance of our experienced librarians.',
       image: '/images/amenity-library.jpg',
+    },
+    {
+      title: 'Classrooms',
+      text: 'Our spacious and well-lit classrooms provide a comfortable and stimulating learning environment. Each classroom is equipped with modern furniture and technology, including projectors and smart boards. We maintain an adequate student-teacher ratio to ensure that each student receives personalized attention.',
+      image: '/images/amenity-classroom.jpg',
     },
   ],
   disclosures: {
