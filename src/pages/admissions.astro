@@ -1,14 +1,44 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../../site.config';
+import { crop, pos } from '../lib/z';
 
-const gallery = [
-  '/images/admissions-1.jpg',
-  '/images/admissions-2.jpg',
-  '/images/admissions-3.jpg',
-  '/images/admissions-4.jpg',
-  '/images/admissions-5.jpg',
-  '/images/admissions-6.jpg',
+const img = (f: string) => `/images/live/${f}`;
+
+const cards = [
+  {
+    title: 'Holistic Development Focus',
+    strong: true,
+    text: 'We focus on holistic development, combining academic excellence with character growth for a brighter future.',
+  },
+  {
+    title: 'Curriculum That Inspires Excellence',
+    strong: false,
+    text: 'Designed to challenge and inspire, our academic programs cultivate a passion for learning and excellence.',
+  },
+  {
+    title: 'Inclusive Learning Environment',
+    strong: true,
+    text: 'Join us in nurturing young minds with quality education and a commitment to lifelong learning.',
+  },
+];
+
+// Desktop column x for image and text, and mobile top margins for image, title, text.
+const cardLayout = [
+  { ix: 0, tx: 0, m: [40, 16, 8], mh: 224 },
+  { ix: 413, tx: 412, m: [58, 17, 8], mh: 223 },
+  { ix: 824, tx: 824, m: [56, 17, 8], mh: 224 },
+];
+
+const cardImages = [
+  { src: img('dsc_6519-1-dOqaMn4wXnsEaLKD.jpg'), w: 1280, h: 853, style: '' },
+  { src: img('pic09764-dWxvn3b8QgFBwXWN.jpg'), w: 1280, h: 853, style: '' },
+  {
+    src: img('20240815-dsc_1195-1-YX4l2eaGLrFZO7Ko.jpg'),
+    w: 1280,
+    h: 852,
+    style: crop(400, 280.2, [-92, -54.5, 584.2, 389.5], { fw: 328, fh: 224, r: [-69.5, -43.5, 468, 311.4] }),
+  },
 ];
 ---
 
@@ -18,53 +48,54 @@ const gallery = [
   keywords="Indra Heritage School, Admissions, Quality Education"
   canonicalPath="/admissions"
 >
-  <section class="page-hero-title">
-    <div class="container">
-      <h1>Admissions open for {site.sessionYear} session</h1>
-      <p>
-        IHS is a co-educational, English medium school, offering value based education from Nursery
-        to class VIII
-      </p>
-      <a class="btn btn-maroon" href={site.applyUrl} target="_blank" rel="noopener">Apply Now</a>
+  <section style="background:rgb(241,241,241)">
+    <div class="zg" style="--H:831;--mpb:45.6">
+      <h1 class="z t-h1 t-center ws" style={pos(0, 64, 1224, { mt: 40 })}>{`Admissions open for ${site.sessionYear} session `}</h1>
+      <p class="z t-body t-center c-muted ws" style={pos(309, 144.4, 606, { mt: 6 })}>{'IHS is a co-educational, English medium school, offering value based education from Nursery to class VIII'}</p>
+      {
+        cards.map((c, i) => {
+          const l = cardLayout[i];
+          const im = cardImages[i];
+          return (
+            <>
+              <div class="z zbox r20" style={pos(l.ix, 353.4, 400, { h: 280.2, mt: l.m[0], mh: l.mh })}>
+                <img class={im.style ? 'crop' : undefined} style={im.style || undefined} src={im.src} alt="" width={im.w} height={im.h} loading="lazy" />
+              </div>
+              <h6 class="z t-h6 c-ink ws" style={pos(l.tx, 657.6, 351, { mt: l.m[1] })}>{c.strong ? <strong>{c.title}</strong> : c.title}</h6>
+              <p class="z t-body c-muted ws" style={pos(l.tx, 687, 351, { mt: l.m[2] })}>{c.text}</p>
+            </>
+          );
+        })
+      }
+      <a
+        class="z btn btn-pill btn-y2 c-ink zbtn mc"
+        href={site.applyUrl}
+        target="_blank"
+        rel="nofollow noopener"
+        style={pos(476, 238.4, 272, { h: 50, mt: 39, mw: 130 })}>Enroll Now</a
+      >
     </div>
   </section>
 
-  <section class="section section-muted">
-    <div class="container features-grid">
-      <article class="feature-card">
-        <h6>Holistic Development Focus</h6>
-        <p>
-          We focus on holistic development, combining academic excellence with character growth for a
-          brighter future.
-        </p>
-      </article>
-      <article class="feature-card">
-        <h6>Curriculum That Inspires Excellence</h6>
-        <p>
-          Designed to challenge and inspire, our academic programs cultivate a passion for learning
-          and excellence.
-        </p>
-      </article>
-      <article class="feature-card">
-        <h6>Inclusive Learning Environment</h6>
-        <p>
-          Join us in nurturing young minds with quality education and a commitment to lifelong
-          learning.
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <h3>Gallery</h3>
-      <p>Explore our vibrant moments of learning and growth at Indra Heritage School</p>
-      <div class="gallery-grid" style="margin-top:24px">
-        {gallery.map((src, i) => <img src={src} alt={`Admissions gallery ${i + 1}`} loading="lazy" />)}
+  <section>
+    <div class="zg" style="--H:704;--mpb:0">
+      <h3 class="z t-h3 ws" style={`${pos(0, 264, 342, { mt: 54 })};color:rgb(26,26,28)`}>{'Gallery'}</h3>
+      <p class="z t-body c-muted ws" style={pos(0, 352.4, 354, { mt: 0.4 })}>{'Explore our vibrant moments of learning and growth at Indra Heritage School'}</p>
+      <div class="z zbox r16" style={pos(824, 64, 400, { h: 568.9, mt: 34, mh: 320 })}>
+        <img src={img('whatsapp-image-2025-01-07-at-11.25.58-am-AQEx3PxEzpiR8zW7.jpeg')} alt="" width="962" height="1280" loading="lazy" />
       </div>
-      <p style="margin-top:24px">
-        <a class="btn btn-yellow" href="/gallery">View full gallery</a>
-      </p>
+      <div class="z zbox r16" style={pos(412, 64, 400, { h: 280.4, mt: 16, mh: 320 })}>
+        <img src={img('whatsapp-image-2025-01-07-at-11.32.16-am-1-d951MQ14qzh7baRp.jpeg')} alt="" width="1280" height="962" loading="lazy" />
+      </div>
+      <div class="z zbox r16" style={pos(412, 352.4, 400, { h: 280.5, mt: 14, mh: 320 })}>
+        <img src={img('img-20240806-wa0003-Yan17E18N9haPbLG.jpg')} alt="" width="1183" height="1280" loading="lazy" />
+      </div>
+      <a
+        class="z btn btn-pill btn-y3 zbtn mc"
+        href="/gallery"
+        target="_blank"
+        style={pos(0, 414.6, 130, { h: 50, mt: 16, mw: 130 })}>View More</a
+      >
     </div>
   </section>
 </BaseLayout>

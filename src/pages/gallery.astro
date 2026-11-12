@@ -1,31 +1,50 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { galleryTiles } from '../data/gallery';
+import Lightbox from '../components/Lightbox.astro';
+import { galleryCaptions, galleryImages } from '../data/gallery';
+import { pos } from '../lib/z';
+
+const columns = (n: number) =>
+  Array.from({ length: n }, (_, c) => galleryImages.map((im, i) => ({ ...im, i })).filter((im) => im.i % n === c));
 ---
 
 <BaseLayout
   title="Indra Heritage School - Quality Education in Tilaura | Indra Heritage School"
   canonicalPath="/gallery"
 >
-  <section class="page-hero-title">
-    <div class="container">
-      <h3>IHS Gallery</h3>
-      <p>Explore our vibrant moments of learning and growth at Indra Heritage School</p>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:0">
-    <div class="container">
-      <div class="masonry-gallery">
+  <section>
+    <div class="zg" style="--H:2297;--mpb:0">
+      <h3 class="z t-h3 t-center ws" style={pos(0, 80, 1224, { mt: 40 })}>{'IHS Gallery'}</h3>
+      <p class="z t-body t-center ws" style={pos(412, 152.4, 400, { mt: 14.4 })}>{'Explore our vibrant moments of learning and growth at Indra Heritage School'}</p>
+      <div class="z z-static" style={pos(0, 224.4, 1224, { mt: 26 })} data-lightbox>
         {
-          galleryTiles.map((tile) => (
-            <figure class="masonry-gallery__item">
-              <img src={tile.src} alt={tile.label || 'Indra Heritage School gallery'} loading="lazy" />
-              {tile.label ? <figcaption>{tile.label}</figcaption> : null}
-            </figure>
+          [
+            { n: 4, cls: 'masonry--d' },
+            { n: 2, cls: 'masonry--m' },
+          ].map(({ n, cls }) => (
+            <div class={`masonry ${cls}`} style={`--cols:${n}`}>
+              {columns(n).map((col) => (
+                <div class="masonry__col">
+                  {col.map((im) => (
+                    <img
+                      class="z-reveal zoom"
+                      src={im.src}
+                      alt="Indra Heritage School gallery"
+                      style={`--h:${n === 4 ? im.h : im.mh}`}
+                      loading="lazy"
+                      data-lb={im.i}
+                      data-lb-src={im.src}
+                    />
+                  ))}
+                </div>
+              ))}
+            </div>
           ))
         }
       </div>
+      {galleryCaptions.map((c) => <h3 class="z g-cap ws" style={pos(c.x, c.y, c.w, { mt: 16 })}>{c.text}</h3>)}
     </div>
   </section>
+
+  <Lightbox />
 </BaseLayout>

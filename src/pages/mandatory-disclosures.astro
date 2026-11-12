@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import DisclosureTables from '../components/DisclosureTables.astro';
+import { disclosuresDoc } from '../lib/disclosures';
+import { pos } from '../lib/z';
 ---
 
 <BaseLayout
@@ -8,16 +9,13 @@ import DisclosureTables from '../components/DisclosureTables.astro';
   description="Mandatory Disclosure - CENTRAL BOARD OF SECONDARY EDUCATION for Indra Heritage School."
   canonicalPath="/mandatory-disclosures"
 >
-  <section class="page-hero-title">
-    <div class="container">
-      <h1>Mandatory Disclosure</h1>
-      <p>CENTRAL BOARD OF SECONDARY EDUCATION</p>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:0">
-    <div class="container">
-      <DisclosureTables />
+  <section>
+    <div class="zg" style="--H:2618;--mpb:0">
+      <h1 class="z t-h1-xl t-center ws" style={pos(0, 64, 1224, { mt: 40 })}>{'Mandatory Disclosure'}</h1>
+      <p class="z t-body t-center ws mc" style={pos(309, 160.2, 606, { mt: 16, mw: 266 })}>{'CENTRAL BOARD OF SECONDARY EDUCATION'}</p>
+      <div class="z z-static disclosures-frame" style={pos(103, 240.2, 1018, { h: 2321, mt: 32, mh: 2769 })}>
+        <iframe srcdoc={disclosuresDoc()} title="Mandatory disclosure tables"></iframe>
+      </div>
     </div>
   </section>
 </BaseLayout>

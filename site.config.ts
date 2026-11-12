@@ -172,7 +172,7 @@ export const site = {
         href: '/pdfs/school-management-committee.pdf',
       },
       {
-        label: "List of Parents Teachers' Association",
+        label: 'List of Parents Teachers’ Association',
         value: 'PTA COMMITEE.pdf',
         href: '/pdfs/pta-committee.pdf',
       },
@@ -212,7 +212,7 @@ export const site = {
       { label: 'Special Educators', value: '1' },
       { label: 'Counsellor and Wellness Teachers', value: '1' },
       {
-        label: "Teacher's List",
+        label: 'Teacher’s List',
         value: 'Teachers List.pdf',
         href: '/pdfs/teachers-list.pdf',
       },

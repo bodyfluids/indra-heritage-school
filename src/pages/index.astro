@@ -1,13 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroCarousel from '../components/HeroCarousel.astro';
-import MapEmbed from '../components/MapEmbed.astro';
+import LocationSection from '../components/LocationSection.astro';
 import { site } from '../../site.config';
-
-const pos = (x: number, y: number, w: number, extra: Record<string, number> = {}) =>
-  Object.entries({ x, y, w, ...extra })
-    .map(([k, v]) => `--${k}:${v}`)
-    .join(';');
+import { pos } from '../lib/z';
 
 // Desktop: icon box (x, y, w, h). Mobile: icon top margin/height, title and text top margins.
 const whyLayout = [
@@ -118,23 +114,5 @@ const amenityLayout = [
     </div>
   </section>
 
-  <section class="home-location">
-    <div class="zg" style="--H:608;--mpb:41">
-      <h4 class="z location-title" style={pos(0, 120, 503, { mt: 40 })}>School Location</h4>
-      <p class="z location-text" style={pos(0, 214, 503, { mt: 22 })}>
-        <strong>Indra Heritage School</strong><br />
-        {site.address.line1}<br />
-        {site.address.line2}<br /><br />
-        <strong>Hours</strong><br />
-        Monday - Saturday<br />
-        9am - 6pm<br /><br />
-        <strong>Contacts</strong><br />
-        {site.phones[0]} or {site.phones[1]}<br />
-        <a href={`mailto:${site.email}`}>{site.email}</a>
-      </p>
-      <div class="z location-map" style={pos(515, 80, 709, { mt: 40 })}>
-        <MapEmbed />
-      </div>
-    </div>
-  </section>
+  <LocationSection title="School Location" />
 </BaseLayout>

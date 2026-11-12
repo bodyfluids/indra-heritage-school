@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import MapEmbed from '../components/MapEmbed.astro';
-import { site } from '../../site.config';
+import LocationSection from '../components/LocationSection.astro';
+import { pos } from '../lib/z';
 ---
 
 <BaseLayout
@@ -9,20 +9,13 @@ import { site } from '../../site.config';
   description="Get in touch with Indra Heritage School for inquiries about our value-based education, admissions, and more. We are dedicated to providing quality education from nursery to class IX, honoring the legacy of Sh. Indra Deo Dhar Dubey."
   canonicalPath="/contact"
 >
-  <section class="section">
-    <div class="container location-block">
-      <div class="location-card">
-        <h4>Contact Us</h4>
-        <p>
-          Indra Heritage School<br />
-          {site.address.line1}<br />
-          {site.address.line2}<br />
-          Hours {site.address.hours}<br />
-          Contacts {site.phones[0]} or {site.phones[1]}<br />
-          <a href={`mailto:${site.email}`}>{site.email}</a>
-        </p>
+  <section>
+    <div class="zg" style="--H:778;--mpb:55">
+      <div class="z zbox r20" style={`${pos(56, 80, 1111, { h: 640, mt: 58, mh: 320 })};--op:50% 33%;--mop:50% 50%`}>
+        <img src="/images/live/20240815-dsc_1082-1-YNqBDQ217VCnkx5e.jpg" alt="Indra Heritage School campus" width="1280" height="852" />
       </div>
-      <MapEmbed title="Locate Indra Heritage School" />
     </div>
   </section>
+
+  <LocationSection title="Contact Us" />
 </BaseLayout>

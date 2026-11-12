@@ -1,27 +1,26 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Lightbox from '../components/Lightbox.astro';
 import { site } from '../../site.config';
+import { pos } from '../lib/z';
+
+const img = (f: string) => `/images/live/${f}`;
+
+const video =
+  'https://www.youtube.com/embed/unaHf16H1vM?h=null&playlist=unaHf16H1vM&autoplay=0&controls=1&loop=0&autopause=0&playsinline=1&mute=0';
 
 const sports = [
-  '/images/about-sports-1.jpg',
-  '/images/about-sports-2.jpg',
-  '/images/about-sports-3.jpg',
-  '/images/about-sports-4.jpg',
-  '/images/about-beyond.jpg',
-  '/images/about-campus-6.jpg',
+  'pic09921-Yg2j7wGNlyhWw3Ne.jpg',
+  'badminton-A3Q2BGBG2Kt5J8Bk.jpg',
+  'football-A3Q2BGBGlBhDO2P4.jpg',
+  'beyond1-dOqaMeMeOJSLkD8g.jpg',
+  'basket-YrDW3w3w8Viz90W5.jpg',
+  'pic00089-1-d951P72PX7Fg861E.jpg',
+  'tennis-Yyv9ylyEJ3HegW6y.jpg',
+  '457137480_122164517318241334_252672337835545569_n-YrDW3wEMJBsejyjg.jpg',
 ];
 
-const campus = [
-  '/images/about-campus-1.jpg',
-  '/images/about-campus-2.jpg',
-  '/images/about-campus-3.jpg',
-  '/images/about-campus-4.jpg',
-  '/images/about-campus-5.jpg',
-  '/images/about-campus-7.jpg',
-  '/images/about-campus-8.jpg',
-  '/images/about-campus-9.jpg',
-  '/images/about-campus-10.jpg',
-];
+const slate = 'margin-bottom:18px';
 ---
 
 <BaseLayout
@@ -30,119 +29,112 @@ const campus = [
   keywords="Indra Heritage School, CBSE education, quality primary education"
   canonicalPath="/about"
 >
-  <section class="cta-band">
-    <div class="container">
-      <h3>Admissions open for Nursery to VIII</h3>
-      <a class="btn btn-maroon" href={site.applyUrl} target="_blank" rel="noopener">Enquire for admission</a>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container about-message">
-      <div class="prose" style="margin:0">
-        <h3>A Message from our Chairperson</h3>
-        <p>
-          It is with immense pride and humility that I welcome you to Indra Heritage School, an
-          institution born from a dream fueled by the indomitable spirit of my father, Sh. Indra Deo
-          Dhar Dubey.
-        </p>
-        <p>
-          My father, Indra Ji, as he was lovingly known, was a man forged in the fires of adversity.
-          Growing up in our village of Tilaura, Uttar Pradesh, education was not a privilege but a
-          battle hard-won. Battling through poverty and the limitations of his circumstances, he
-          never let go of his thirst for knowledge. The incident where his shoulders burdened with
-          his bicycle, trudging through rain to reach school, is etched forever in my memory.
-        </p>
-        <p>
-          Yet, it was this very struggle that shaped his vision. Witnessing the hardships students
-          like him faced, he vowed to build a bridge, a path that would make education accessible to
-          all. And so, in 2004, the Smt. Pyari Devi Educational Society Trust was born, carrying his
-          mother's name and his unwavering commitment. Today, PDES Trust stands tall, a beacon of
-          hope with over five institutions dedicated to higher education.
-        </p>
-        <h5>
-          <a href={site.facebook} target="_blank" rel="noopener">Mr. Jayant Dev Dhar Dubey</a>
-        </h5>
-        <p>Chairperson, Indra Heritage School</p>
-        <p>
-          Indra Heritage School is a testament to his unyielding belief in the transformative power
-          of education. This school is not merely bricks and mortar; it is a living embodiment of
-          his values, his dreams, his legacy.
-        </p>
-        <p>
-          Here, within these walls, we strive to create a haven where young minds can blossom. We
-          believe that knowledge is not just power, it is liberation. It is the key that unlocks
-          doors, shatters limitations, and paves the way for a brighter future. Let us, together,
-          honor his memory by building a future where education is not a privilege, but a birthright.
-        </p>
-        <p>Welcome to Indra Heritage School. Welcome to our family.</p>
-        <p>
-          With warm regards,<br />
-          Mr. Jayant Dev Dhar Dubey<br />
-          Chairperson, Indra Heritage School
-        </p>
-      </div>
-      <div class="rounded-media">
-        <img
-          src="/images/about-chairperson.jpg"
-          alt="Mr. Jayant Dev Dhar Dubey"
-          width="600"
-          height="750"
-          loading="lazy"
-        />
+  <section>
+    <div class="zg" style="--H:983;--mpb:0">
+      <h3 class="z t-h3 ws" style={pos(0, 80, 503, { mt: 40 })}>{'Welcome to Indra Heritage School'}</h3>
+      <h3 class="z t-h3 ws" style={`${pos(628, 80, 503, { mt: 16 })};color:var(--maroon)`}>{'Admissions open for  Nursery to VIII'}</h3>
+      <div class="z zbox" style={pos(0, 271, 1224, { h: 689, mt: 15, mh: 200 })}>
+        <iframe
+          src={video}
+          title="Indra Heritage School"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"></iframe>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <h3>Diverse Sporting Haven</h3>
-      <p>
-        Nestled on a sprawling 3-acre campus, School provides ample space for students to explore
-        their athletic potential.
-      </p>
-      <p>Cricket Academy. Basketball Ball Court. Football Ground. Play area for pre-primary classes</p>
-      <div class="gallery-grid" style="margin-top:28px">
-        {sports.map((src, i) => <img src={src} alt={`Sports ${i + 1}`} loading="lazy" />)}
+  <section>
+    <div class="zg" style="--H:944.5;--mpb:38.8">
+      <h3 class="z t-h3 ws" style={pos(0, 80, 503, { mt: 40 })}>{'A Message from our Chairperson'}</h3>
+      <div class="z zbox r20" style={pos(721, 80, 503, { h: 452.5, mt: 29, mh: 301 })}>
+        <img src={img('pic00128-1-m7V32vO7zOHZQP6Q.jpg')} alt="Mr. Jayant Dev Dhar Dubey" width="1280" height="853" loading="lazy" />
+      </div>
+      <div class="z zbox" style={`${pos(721, 464.5, 503, { h: 120, mt: -39, mh: 107 })};background:rgb(236,239,243)`}></div>
+      <h5 class="z t-h5 ws mc m-center" style={pos(749, 484.5, 400, { mt: -90, mw: 264 })}><a href="">{'Mr. Jayant Dev Dhar Dubey'}</a></h5>
+      <p class="z t-small ws mc m-center" style={pos(749, 532.5, 400, { mt: 16, mw: 260 })}>{'Chairperson, Indra Heritage School'}</p>
+      <div class="z tb t-body ws" style={pos(0, 228.3, 709, { mt: 67 })}>
+        <p>{'It is with immense pride and humility that I welcome you to Indra Heritage School, an institution born from a dream fueled by the indomitable spirit of my father, Sh. Indra Deo Dhar Dubey.'}</p>
+        <p class="c-slate" style={slate}>{'My father, Indra Ji, as he was lovingly known, was a man forged in the fires of adversity. Growing up in our village of Tilaura, Uttar Pradesh, education was not a privilege but a battle hard-won. Battling through poverty and the limitations of his circumstances, he never let go of his thirst for knowledge. The incident where his shoulders burdened with his bicycle, trudging through rain to reach school, is etched forever in my memory.'}</p>
+        <p class="c-slate" style={slate}>{"Yet, it was this very struggle that shaped his vision. Witnessing the hardships students like him faced, he vowed to build a bridge, a path that would make education accessible to all. And so, in 2004, the Smt. Pyari Devi Educational Society Trust was born, carrying his mother's name and his unwavering commitment. Today, PDES Trust stands tall, a beacon of hope with over five institutions dedicated to higher education."}</p>
+      </div>
+      <div class="z tb t-body ws" style={pos(0, 618.5, 1224, { mt: 16 })}>
+        <p>{'Indra Heritage School is a testament to his unyielding belief in the transformative power of education. This school is not merely bricks and mortar; it is a living embodiment of his values, his dreams, his legacy.'}</p>
+        <p class="c-slate" style={slate}>{'Here, within these walls, we strive to create a haven where young minds can blossom. We believe that knowledge is not just power, it is liberation. It is the key that unlocks doors, shatters limitations, and paves the way for a brighter future. Let us, together, honor his memory by building a future where education is not a privilege, but a birthright.'}</p>
+        <p class="c-slate" style={slate}>Welcome to Indra Heritage School.<br />Welcome to our family.</p>
+        <p class="c-slate" style={slate}>With warm regards,<br />Mr. Jayant Dev Dhar Dubey<br />Chairperson, Indra Heritage School</p>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <h3>Quality education with world class infrastructure</h3>
-      <p>Indra Heritage School offers value-based quality education from Nursery-VIII</p>
-      <div class="gallery-grid" style="margin-top:28px">
-        {campus.map((src, i) => <img src={src} alt={`Campus ${i + 1}`} loading="lazy" />)}
+  <section>
+    <div class="zg" style="--H:702;--mpb:23.8">
+      <h3 class="z t-h3 t-center ws" style={pos(0, 18, 1224, { mt: 37 })}>{'Diverse Sporting Haven'}</h3>
+      <div class="z tb t-body t-center ws sports-text" style={pos(0, 83.4, 1149, { mt: 17 })}>
+        <p class="lh-a">{'Nestled on a sprawling 3-acre campus, School provides ample space for students to explore their athletic potential.'}</p>
+        <p class="lh-b"><strong>{' Cricket Academy.  Basketball Ball Court.  Football Ground.  Play area for pre-primary classes'}</strong></p>
+        <p class="lh-b"></p>
       </div>
-      <div class="features-grid" style="margin-top:40px">
-        <article class="feature-card" style="color:inherit">
-          <h5>Learning That Transforms</h5>
-          <p style="color:var(--muted)">
-            Fostering growth through practical experiences and cutting-edge resources.
-          </p>
-        </article>
-        <article class="feature-card" style="color:inherit">
-          <h5>Embracing cultures to build global citizens</h5>
-          <p style="color:var(--muted)">
-            Our diverse programs foster understanding, collaboration, and respect for all cultures
-          </p>
-        </article>
+      <div class="z z-static sgrid" style={pos(116, 160.4, 992, { mt: 7 })} data-lightbox>
+        {
+          sports.map((f, i) => (
+            <img class="z-reveal zoom" src={img(f)} alt="" width="600" height="400" loading="lazy" data-lb={i} data-lb-src={img(f)} />
+          ))
+        }
       </div>
     </div>
   </section>
+
+  <section>
+    <div class="zg" style="--H:1348;--mpb:83">
+      <h3 class="z t-h3 t-center ws" style={pos(0, 40, 1224, { mt: 40 })}>{'Quality education with world class infrastructure'}</h3>
+      <p class="z t-body t-center c-muted ws" style={pos(373, 112.4, 477, { mt: 15 })}>{'Indra Heritage School offers value-based quality education from Nursery-VIII'}</p>
+      <div class="z zbox r20" style={pos(92, 227.8, 308, { h: 220.1, mt: 35, mh: 225 })}>
+        <img src={img('pic09985-YZ98MZew5Bs6py3Q.jpg')} alt="" width="1280" height="853" loading="lazy" />
+      </div>
+      <div class="zrow" style="--mt:24">
+        <div class="z zbox r20" style={pos(836, 224.4, 312, { h: 223.5, mh: 184 })}>
+          <img src={img('pic09781-d951MGNJqgT59XKE.jpg')} alt="" width="1280" height="853" loading="lazy" />
+        </div>
+        <div class="z zbox r20" style={pos(456, 227.8, 312, { h: 223.5, mh: 184 })}>
+          <img src={img('pic09737-AGB2ql1R7yT37g3B.jpg')} alt="" width="1280" height="853" loading="lazy" />
+        </div>
+      </div>
+      <h5 class="z t-h5 c-ink m-center ws" style={pos(103, 511.3, 709, { mt: 54 })}><strong>{'Learning That Transforms'}</strong></h5>
+      <p class="z t-body m-center ws about-dark" style={pos(103, 545.3, 709, { mt: 24 })}>{'Fostering growth through practical experiences and cutting-edge resources.'}</p>
+      <div class="z zbox r20" style={pos(463, 601.3, 297, { h: 213, mt: 19, mh: 213 })}>
+        <img src={img('whatsapp-image-2025-01-07-at-12.47.07-pm-A0xl3zKeX6FggB0k.jpeg')} alt="" width="720" height="1280" loading="lazy" />
+      </div>
+      <div class="zrow" style="--mt:16">
+        <div class="z zbox r20" style={`${pos(103, 601.3, 297, { h: 213, mh: 184 })};--op:50% 51.4%`}>
+          <img src={img('img_20250206_130623-AR0Le84jX5fjD91B.jpg')} alt="" width="960" height="1280" loading="lazy" />
+        </div>
+        <div class="z zbox r20" style={`${pos(842, 601.3, 297, { h: 213, mh: 184 })};--op:50% 66.9%`}>
+          <img src={img('img_20250206_133538-mk3vlgx09RirQnPV.jpg')} alt="" width="960" height="1280" loading="lazy" />
+        </div>
+      </div>
+      <h5 class="z t-h5 c-ink m-center ws" style={pos(103, 865.3, 709, { mt: 56 })}>{'Embracing cultures to build global citizens'}</h5>
+      <p class="z t-body m-center ws about-dark" style={pos(103, 899.3, 709, { mt: 16 })}>{'Our diverse programs foster understanding, collaboration, and respect for all cultures'}</p>
+      <div class="z zbox r20" style={pos(463, 948.3, 297, { h: 213, mt: 20, mh: 213 })}>
+        <img src={img('20240815-dsc_1158-AMq12QVv4as2xzBM.jpg')} alt="" width="1280" height="1057" loading="lazy" />
+      </div>
+      <div class="zrow" style="--mt:27">
+        <div class="z zbox r20" style={pos(103, 948.3, 297, { h: 213, mh: 184 })}>
+          <img src={img('whatsapp-image-2025-01-07-at-11.43.06-am-mP4OZlwvD1cRaqoP.jpeg')} alt="" width="1280" height="718" loading="lazy" />
+        </div>
+        <div class="z zbox r20" style={pos(842, 948.3, 297, { h: 213, mh: 184 })}>
+          <img src={img('20250202_122849-AMq12QV2jKtlylG1.jpg')} alt="" width="960" height="1280" loading="lazy" />
+        </div>
+      </div>
+      <a
+        class="z btn btn-y2 zbtn mc"
+        href={site.applyUrl}
+        target="_blank"
+        rel="nofollow noopener"
+        style={pos(515, 1225.4, 194, { h: 56, mt: 40, mw: 201 })}>Enquire for admission</a
+      >
+    </div>
+  </section>
+
+  <Lightbox />
 </BaseLayout>
-
-<style>
-  .about-message {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 40px;
-    align-items: start;
-  }
-  @media (max-width: 900px) {
-    .about-message {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>

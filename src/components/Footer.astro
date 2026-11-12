@@ -8,11 +8,11 @@ const pos = (x: number, y: number, w: number, mt: number) => `--x:${x};--y:${y};
 <footer class="site-footer">
   <div class="zg" style="--H:255;--mpb:0">
     <img class="z footer-logo" src="/images/logo-white.png" alt="" width="163" height="182" style={pos(18, 36, 163, 16)} />
-    <div class="z footer-block" style={pos(242, 64, 297, 35)}>
+    <div class="z footer-block" style={pos(242, 48, 297, 35)}>
       <h6>Locate Us</h6>
       <p>{site.address.full}</p>
     </div>
-    <div class="z footer-block" style={pos(551, 69, 297, 25)}>
+    <div class="z footer-block" style={pos(551, 48, 297, 25)}>
       <h6>Contact Us</h6>
       <p>
         Phone: {site.phones[0]}<br />
@@ -20,13 +20,13 @@ const pos = (x: number, y: number, w: number, mt: number) => `--x:${x};--y:${y};
         Email: <a href={`mailto:${site.email}`}>{site.email}</a>
       </p>
     </div>
-    <h6 class="z footer-follow" style={pos(860, 51, 158, 17)}>Follow Us</h6>
-    <div class="z footer-social" style={pos(868, 88, 20, 13)}>
+    <h6 class="z footer-follow" style={pos(860, 46, 158, 17)}>Follow Us</h6>
+    <div class="z footer-social" style={pos(868, 84, 20, 13)}>
       <SocialIcons only="facebook" />
     </div>
-    <p class="z footer-copy" style={pos(296, 211, 606, 37)}>
+    <p class="z footer-copy" style={pos(296, 206, 606, 37)}>
       Copyright © {site.copyrightYears} Indra Heritage School, All Right Reserved.
     </p>
-    <a class="z btn btn-yellow btn-pill footer-apply" href={site.applyUrl} target="_blank" rel="noopener" style={pos(849, 130, 272, 16)}>Apply Now</a>
+    <a class="z btn btn-yellow btn-pill footer-apply" href={site.applyUrl} target="_blank" rel="noopener" style={pos(849, 120, 272, 16)}>Apply Now</a>
   </div>
 </footer>
